@@ -12,18 +12,11 @@
 
     <Grid>
         <StackPanel>
-            <ComboBox SelectedItem="{Binding SelectedMenu}" ItemsSource="{Binding AllMenus}" DisplayMemberPath="name"></ComboBox>
-            <DataGrid ItemsSource="{Binding SelectedMenu.items}"/>
-            <WrapPanel>
-                <Label>Title</Label>
-                <TextBlock Width="150" Text="{Binding NewMenuItem.title}"></TextBlock>
-                <Label>Price</Label>
-                <TextBlock Width="50" Text="{Binding NewMenuItem.price}"></TextBlock>
-            </WrapPanel>
-            <Label>Description</Label>
-            <TextBlock Text="{Binding NewMenuItem.description}"></TextBlock>
+            <ComboBox Name="cboAllMenus" SelectedItem="{Binding SelectedMenu}" ItemsSource="{Binding AllMenus}" DisplayMemberPath="name"></ComboBox>
+            <DataGrid CanUserAddRows="True" ItemsSource="{Binding SelectedMenu.items}" RowEditEnding="DataGrid_RowEditEnding"/>
+           
             
-            <Button>Save Menu Item</Button>
+            <Button Click="Button_Click">Save all New Menu Items</Button>
         </StackPanel>
     </Grid>
 </Window>

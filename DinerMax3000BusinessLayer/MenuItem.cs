@@ -18,10 +18,6 @@ namespace DinerMax3000.Business
                 {
                     _price = value;
                 }
-                else
-                {
-                    throw new ApplicationException("You cannot have free or negative values items.");
-                }
             }
         }
 
