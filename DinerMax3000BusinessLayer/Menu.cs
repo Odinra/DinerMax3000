@@ -11,7 +11,7 @@ namespace DinerMax3000.Business
     {
         public Menu()
         {
-            items = new List<MenuItem>();
+            Items = new List<MenuItem>();
 
         }
         private int _databaseID;
@@ -19,7 +19,7 @@ namespace DinerMax3000.Business
         public void SaveMenuItem(string Name, string Description, double Price)
         {
             MenuItemTableAdapter taMenuItem = new MenuItemTableAdapter();
-            taMenuItem.InsertNewMenuItem(Name, Description, Price, _databaseID);
+            taMenuItem.InsertNewMenuItem(Name, Description, Price, DatabaseID);
         }
         public static List<Menu> GetAllMenus()
         {
@@ -31,7 +31,7 @@ namespace DinerMax3000.Business
             {
                 Menu currentMenu = new Menu();
                 currentMenu.name = menuRow.Name;
-                currentMenu._databaseID = menuRow.Id;
+                currentMenu.DatabaseID = menuRow.Id;
                 allMenus.Add(currentMenu);
 
                 var dtMEnuItems = taMenuItem.GetMenuItemsByMenuId(menuRow.Id);
@@ -50,9 +50,22 @@ namespace DinerMax3000.Business
             item.title = Title;
             item.description = Description;
             item.price = price;
-            items.Add(item);
+            Items.Add(item);
         }
         public string name { get; set; }
-        public List<MenuItem> items { get; set; }
+        public List<MenuItem> Items { get; set; }
+
+        public int DatabaseID
+        {
+            get
+            {
+                return _databaseID;
+            }
+
+            set
+            {
+                _databaseID = value;
+            }
+        }
     }
 }
